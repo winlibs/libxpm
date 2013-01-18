@@ -1,0 +1,74 @@
+﻿Build started 1/17/2013 8:37:09 AM.
+     1>Project "C:\vc11_deps\repo\libXpm-3.5.7\windows\vc11\libxpm.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\include\X11 /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\builds\Win32\Static Release\objs\\" /Fd"..\builds\Win32\Static Release\objs\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt /DFOR_MSW /D_CRT_SECURE_NO_WARNINGS ..\..\src\Attrib.c ..\..\src\CrBufFrI.c ..\..\src\CrDatFrI.c ..\..\src\create.c ..\..\src\CrIFrBuf.c ..\..\src\CrIFrDat.c ..\..\src\data.c ..\..\src\hashtab.c ..\..\src\Image.c ..\..\src\Info.c ..\..\src\misc.c ..\..\src\parse.c ..\..\src\RdFToBuf.c ..\..\src\RdFToDat.c ..\..\src\RdFToI.c ..\..\src\rgb.c ..\..\src\scan.c ..\..\src\simx.c ..\..\src\WrFFrBuf.c ..\..\src\WrFFrDat.c ..\..\src\WrFFrI.c
+         Attrib.c
+     1>..\..\src\Attrib.c(131): warning C4018: '<' : signed/unsigned mismatch
+         CrBufFrI.c
+         CrDatFrI.c
+         create.c
+         CrIFrBuf.c
+         CrIFrDat.c
+         data.c
+         hashtab.c
+     1>..\..\src\hashtab.c(158): warning C4018: '<' : signed/unsigned mismatch
+         Image.c
+         Info.c
+         misc.c
+         parse.c
+         RdFToBuf.c
+     1>..\..\src\RdFToBuf.c(75): warning C4996: '_open': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _open. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\io.h(238) : see declaration of '_open'
+     1>..\..\src\RdFToBuf.c(83): warning C4996: '_close': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _close. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\io.h(187) : see declaration of '_close'
+     1>..\..\src\RdFToBuf.c(86): warning C4996: '_fdopen': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _fdopen. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(189) : see declaration of '_fdopen'
+     1>..\..\src\RdFToBuf.c(88): warning C4996: '_close': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _close. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\io.h(187) : see declaration of '_close'
+         RdFToDat.c
+         RdFToI.c
+     1>..\..\src\RdFToI.c(202): warning C4013: '_open' undefined; assuming extern returning int
+     1>..\..\src\RdFToI.c(247): warning C4996: '_fdopen': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _fdopen. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(189) : see declaration of '_fdopen'
+     1>..\..\src\RdFToI.c(251): warning C4013: '_close' undefined; assuming extern returning int
+         rgb.c
+         scan.c
+         simx.c
+         WrFFrBuf.c
+         WrFFrDat.c
+         Compiling...
+         WrFFrI.c
+     1>..\..\src\WrFFrI.c(336): warning C4996: '_open': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _open. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\io.h(238) : see declaration of '_open'
+     1>..\..\src\WrFFrI.c(350): warning C4996: '_fdopen': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _fdopen. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\stdio.h(189) : see declaration of '_fdopen'
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1299,5): warning MSB8012: TargetPath(C:\vc11_deps\repo\libXpm-3.5.7\windows\vc11\..\builds\Win32\Static Release\libxpm.lib) does not match the Library's OutputFile property value (C:\vc11_deps\repo\libXpm-3.5.7\windows\builds\Win32\Static Release\libxpm_a.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1301,5): warning MSB8012: TargetName(libxpm) does not match the Library's OutputFile property value (libxpm_a). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"..\builds\Win32\Static Release\libxpm_a.lib" /NOLOGO /LTCG "..\builds\Win32\Static Release\objs\Attrib.obj"
+         "..\builds\Win32\Static Release\objs\CrBufFrI.obj"
+         "..\builds\Win32\Static Release\objs\CrDatFrI.obj"
+         "..\builds\Win32\Static Release\objs\create.obj"
+         "..\builds\Win32\Static Release\objs\CrIFrBuf.obj"
+         "..\builds\Win32\Static Release\objs\CrIFrDat.obj"
+         "..\builds\Win32\Static Release\objs\data.obj"
+         "..\builds\Win32\Static Release\objs\hashtab.obj"
+         "..\builds\Win32\Static Release\objs\Image.obj"
+         "..\builds\Win32\Static Release\objs\Info.obj"
+         "..\builds\Win32\Static Release\objs\misc.obj"
+         "..\builds\Win32\Static Release\objs\parse.obj"
+         "..\builds\Win32\Static Release\objs\RdFToBuf.obj"
+         "..\builds\Win32\Static Release\objs\RdFToDat.obj"
+         "..\builds\Win32\Static Release\objs\RdFToI.obj"
+         "..\builds\Win32\Static Release\objs\rgb.obj"
+         "..\builds\Win32\Static Release\objs\scan.obj"
+         "..\builds\Win32\Static Release\objs\simx.obj"
+         "..\builds\Win32\Static Release\objs\WrFFrBuf.obj"
+         "..\builds\Win32\Static Release\objs\WrFFrDat.obj"
+         "..\builds\Win32\Static Release\objs\WrFFrI.obj"
+         libxpm.vcxproj -> C:\vc11_deps\repo\libXpm-3.5.7\windows\vc11\..\builds\Win32\Static Release\libxpm.lib
+     1>Done Building Project "C:\vc11_deps\repo\libXpm-3.5.7\windows\vc11\libxpm.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.07

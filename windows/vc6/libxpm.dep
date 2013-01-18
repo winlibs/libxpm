@@ -1,0 +1,149 @@
+# Microsoft Developer Studio Generated Dependency File, included by libxpm.mak
+
+..\..\src\Attrib.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\CrBufFrI.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\CrDatFrI.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\create.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\CrIFrBuf.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\CrIFrDat.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\data.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\hashtab.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\Image.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\Info.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\misc.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\parse.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\RdFToBuf.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\RdFToDat.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\RdFToI.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\rgb.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\rgbtab.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\scan.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\simx.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\WrFFrBuf.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\WrFFrDat.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
+
+..\..\src\WrFFrI.c : \
+	"..\..\include\X11\xpm.h"\
+	"..\..\src\amigax.h"\
+	"..\..\src\simx.h"\
+	"..\..\src\XpmI.h"\
+	
