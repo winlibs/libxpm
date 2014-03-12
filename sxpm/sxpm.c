@@ -22,7 +22,6 @@
  * used in advertising or otherwise to promote the sale, use or other dealings
  * in this Software without prior written authorization from GROUPE BULL.
  */
-/* $XFree86: xc/extras/Xpm/sxpm/sxpm.c,v 1.2 2001/08/01 00:44:34 tsi Exp $ */
 
 /*****************************************************************************\
 * sxpm.c:                                                                     *
@@ -110,16 +109,14 @@ static char *plaid[] = {
 #define xrdb XtDatabase(dpy)
 static Colormap colormap;
 
-void Usage();
-void ErrorMessage();
-void Punt();
-void VersionInfo();
-
-#ifdef __STDC__
+void Usage(void) _X_NORETURN;
+void ErrorMessage(int ErrorStatus, const char *tag);
+void Punt(int i) _X_NORETURN;
+void VersionInfo(void);
 void kinput(Widget widget, char *tag, XEvent *xe, Boolean *b);
-#else
-void kinput();
-#endif
+void GetNumbers(int num, int *format_return,
+		int *libmajor_return,
+		char *libminor_return);
 
 #define IWIDTH      50
 #define IHEIGHT     50
@@ -139,9 +136,9 @@ static XrmOptionDescRec options[] = {
 };
 
 int
-main(argc, argv)
-    int argc;
-    char **argv;
+main(
+    int		  argc,
+    char	**argv)
 {
     int ErrorStatus;
     unsigned int verbose = 0;		/* performs verbose output */
@@ -486,7 +483,7 @@ main(argc, argv)
 	    unsigned int i, j;
 
 	    for (i = 0; i < view.attributes.nextensions; i++) {
-		/* L10N_Comments : Output when -v & file has extensions 
+		/* L10N_Comments : Output when -v & file has extensions
 		   %s is replaced by extension name */
 		fprintf(stderr, gettext("Xpm extension : %s\n"),
 			view.attributes.extensions[i].name);
@@ -572,15 +569,12 @@ main(argc, argv)
 	XtMainLoop();
     }
     Punt(0);
-
-    /* Muffle gcc */
-    return 0;
 }
 
 void
-Usage()
+Usage(void)
 {
-    /* L10N_Comments : Usage message (sxpm -h) in two parts. 
+    /* L10N_Comments : Usage message (sxpm -h) in two parts.
        In the first part %s is replaced by the command name. */
     fprintf(stderr, gettext("\nUsage:  %s [options...]\n"), command[0]);
     fprintf(stderr, gettext("Where options are:\n\
@@ -616,9 +610,9 @@ if no input is specified sxpm reads from standard input.\n\
 
 
 void
-ErrorMessage(ErrorStatus, tag)
-    int ErrorStatus;
-    char *tag;
+ErrorMessage(
+    int		 ErrorStatus,
+    const char	*tag)
 {
     char *error = NULL;
     char *warning = NULL;
@@ -627,16 +621,16 @@ ErrorMessage(ErrorStatus, tag)
     case XpmSuccess:
 	return;
     case XpmColorError:
-/* L10N_Comments : The following set of messages are classified as 
+/* L10N_Comments : The following set of messages are classified as
    either errors or warnings.  Based on the class of message, different
-   wrappers are selected at the end to state the message source & class. 
+   wrappers are selected at the end to state the message source & class.
 
 	   L10N_Comments : WARNING produced when filename can be read, but
 	   contains an invalid color specification (need to create test case)*/
 	warning = gettext("Could not parse or alloc requested color");
 	break;
     case XpmOpenFailed:
-	/* L10N_Comments : ERROR produced when filename does not exist 
+	/* L10N_Comments : ERROR produced when filename does not exist
 	   or insufficient permissions to open (i.e. sxpm /no/such/file ) */
 	error = gettext("Cannot open file");
 	break;
@@ -647,7 +641,7 @@ ErrorMessage(ErrorStatus, tag)
 	break;
     case XpmNoMemory:
 	/* L10N_Comments : ERROR produced when filename can be read, but
-	   is too big for memory 
+	   is too big for memory
 	   (i.e. limit datasize 32 ; sxpm /usr/dt/backdrops/Crochet.pm ) */
 	error = gettext("Not enough memory");
 	break;
@@ -674,8 +668,7 @@ ErrorMessage(ErrorStatus, tag)
 }
 
 void
-Punt(i)
-    int i;
+Punt(int i)
 {
     if (icon.pixmap) {
 	XFreePixmap(dpy, icon.pixmap);
@@ -703,11 +696,11 @@ Punt(i)
 }
 
 void
-kinput(widget, tag, xe, b)
-    Widget widget;
-    char *tag;
-    XEvent *xe;
-    Boolean *b;
+kinput(
+    Widget	 widget,
+    char	*tag,
+    XEvent	*xe,
+    Boolean	*b)
 {
     char c = '\0';
 
@@ -721,11 +714,11 @@ kinput(widget, tag, xe, b)
  * number (following the rule described in xpm.h).
  */
 void
-GetNumbers(num, format_return, libmajor_return, libminor_return)
-    int num;
-    int *format_return;
-    int *libmajor_return;
-    char *libminor_return;
+GetNumbers(
+    int		 num,
+    int		*format_return,
+    int		*libmajor_return,
+    char	*libminor_return)
 {
     *format_return = num / 10000;
     *libmajor_return = (num % 10000) / 100;
@@ -733,7 +726,7 @@ GetNumbers(num, format_return, libmajor_return, libminor_return)
 }
 
 void
-VersionInfo()
+VersionInfo(void)
 {
     int format, libmajor;
     char libminor;

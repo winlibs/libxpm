@@ -31,7 +31,6 @@
 *                                                                             *
 *  Developed by Arnaud Le Hors                                                *
 \*****************************************************************************/
-/* $XFree86$ */
 
 /*
  * The code related to AMIGA has been added by
@@ -46,17 +45,14 @@
 #ifndef NO_ZPIPE
 #include "sys/wait.h"
 #include "sys/types.h"
-#include "fcntl.h"
 #include "unistd.h"
 #include "errno.h"
-#else
-#include <io.h>
-#include <fcntl.h>
-#include "sys/stat.h"
 #endif
 
+#include "fcntl.h"
+
 /* MS Windows define a function called WriteFile @#%#&!!! */
-LFUNC(xpmWriteFile, int, (FILE *file, XpmImage *image, char *name,
+LFUNC(xpmWriteFile, int, (FILE *file, XpmImage *image, const char *name,
 			  XpmInfo *info));
 
 LFUNC(WriteColors, void, (FILE *file, XpmColor *colors, unsigned int ncolors));
@@ -68,16 +64,16 @@ LFUNC(WritePixels, int, (FILE *file, unsigned int width, unsigned int height,
 LFUNC(WriteExtensions, void, (FILE *file, XpmExtension *ext,
 			      unsigned int num));
 
-LFUNC(OpenWriteFile, int, (char *filename, xpmData *mdata));
+LFUNC(OpenWriteFile, int, (const char *filename, xpmData *mdata));
 LFUNC(xpmDataClose, void, (xpmData *mdata));
 
 int
-XpmWriteFileFromImage(display, filename, image, shapeimage, attributes)
-    Display *display;
-    char *filename;
-    XImage *image;
-    XImage *shapeimage;
-    XpmAttributes *attributes;
+XpmWriteFileFromImage(
+    Display		*display,
+    const char		*filename,
+    XImage		*image,
+    XImage		*shapeimage,
+    XpmAttributes	*attributes)
 {
     XpmImage xpmimage;
     XpmInfo info;
@@ -103,13 +99,14 @@ XpmWriteFileFromImage(display, filename, image, shapeimage, attributes)
 }
 
 int
-XpmWriteFileFromXpmImage(filename, image, info)
-    char *filename;
-    XpmImage *image;
-    XpmInfo *info;
+XpmWriteFileFromXpmImage(
+    const char	*filename,
+    XpmImage	*image,
+    XpmInfo	*info)
 {
     xpmData mdata;
-    char *name, *dot, *s, new_name[BUFSIZ] = {0};
+    const char *name;
+    char *dot, *s, new_name[BUFSIZ] = {0};
     int ErrorStatus;
 
     /* open file to write */
@@ -148,7 +145,7 @@ XpmWriteFileFromXpmImage(filename, image, info)
 		name = new_name;
 	    }
 	    /* change '-' to '_' */
-	    s = name;
+	    s = new_name;
 	    while ((dot = strchr(s, '-'))) {
 		*dot = '_';
 		s = dot;
@@ -167,11 +164,11 @@ XpmWriteFileFromXpmImage(filename, image, info)
 }
 
 static int
-xpmWriteFile(file, image, name, info)
-    FILE *file;
-    XpmImage *image;
-    char *name;
-    XpmInfo *info;
+xpmWriteFile(
+    FILE	*file,
+    XpmImage	*image,
+    const char	*name,
+    XpmInfo	*info)
 {
     /* calculation variables */
     unsigned int cmts, extensions;
@@ -225,10 +222,10 @@ xpmWriteFile(file, image, name, info)
 }
 
 static void
-WriteColors(file, colors, ncolors)
-    FILE *file;
-    XpmColor *colors;
-    unsigned int ncolors;
+WriteColors(
+    FILE		*file,
+    XpmColor		*colors,
+    unsigned int	 ncolors)
 {
     unsigned int a, key;
     char *s;
@@ -249,20 +246,20 @@ WriteColors(file, colors, ncolors)
 
 
 static int
-WritePixels(file, width, height, cpp, pixels, colors)
-    FILE *file;
-    unsigned int width;
-    unsigned int height;
-    unsigned int cpp;
-    unsigned int *pixels;
-    XpmColor *colors;
+WritePixels(
+    FILE		*file,
+    unsigned int	 width,
+    unsigned int	 height,
+    unsigned int	 cpp,
+    unsigned int	*pixels,
+    XpmColor		*colors)
 {
     char *s, *p, *buf;
     unsigned int x, y, h;
 
     h = height - 1;
-    if (cpp != 0 && width >= (UINT_MAX - 3)/cpp) 
-	return XpmNoMemory;    
+    if (cpp != 0 && width >= (UINT_MAX - 3)/cpp)
+	return XpmNoMemory;
     p = buf = (char *) XpmMalloc(width * cpp + 3);
     if (!buf)
 	return (XpmNoMemory);
@@ -293,10 +290,10 @@ WritePixels(file, width, height, cpp, pixels, colors)
 }
 
 static void
-WriteExtensions(file, ext, num)
-    FILE *file;
-    XpmExtension *ext;
-    unsigned int num;
+WriteExtensions(
+    FILE		*file,
+    XpmExtension	*ext,
+    unsigned int	 num)
 {
     unsigned int x, y, n;
     char **line;
@@ -322,9 +319,9 @@ FUNC(xpmPipeThrough, FILE*, (int fd,
  * open the given file to be written as an xpmData which is returned
  */
 static int
-OpenWriteFile(filename, mdata)
-    char *filename;
-    xpmData *mdata;
+OpenWriteFile(
+    const char	*filename,
+    xpmData	*mdata)
 {
     if (!filename) {
 	mdata->stream.file = (stdout);
@@ -350,8 +347,10 @@ OpenWriteFile(filename, mdata)
 	    mdata->stream.file = fdopen(fd, "w");
 	    mdata->type = XPMFILE;
 	}
-	if (!mdata->stream.file)
+	if (!mdata->stream.file) {
+	    close(fd);
 	    return (XpmOpenFailed);
+	}
     }
     return (XpmSuccess);
 }
@@ -360,8 +359,7 @@ OpenWriteFile(filename, mdata)
  * close the file related to the xpmData if any
  */
 static void
-xpmDataClose(mdata)
-    xpmData *mdata;
+xpmDataClose(xpmData *mdata)
 {
     if (mdata->stream.file != (stdout))
 	fclose(mdata->stream.file);

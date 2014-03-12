@@ -38,9 +38,9 @@
 #include "XpmI.h"
 
 int
-XpmReadFileToData(filename, data_return)
-    char *filename;
-    char ***data_return;
+XpmReadFileToData(
+    const char	  *filename,
+    char	***data_return)
 {
     XpmImage image;
     XpmInfo info;

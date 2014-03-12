@@ -22,7 +22,6 @@
  * used in advertising or otherwise to promote the sale, use or other dealings
  * in this Software without prior written authorization from Arnaud LE HORS.
  */
-/* $XFree86: xc/extras/Xpm/cxpm/cxpm.c,v 1.2 2001/08/01 00:44:34 tsi Exp $ */
 
 /*****************************************************************************\
 * cxpm.c:                                                                     *
@@ -56,9 +55,7 @@
  * note that 's' could stand both for "special" and "slow" ;-)
  */
 static int
-sGetc(data, file)
-    xpmData *data;
-    FILE *file;
+sGetc(xpmData *data, FILE *file)
 {
     int c = getc(data->stream.file);
     if (c == '\n') {
@@ -71,10 +68,7 @@ sGetc(data, file)
 }
 
 static void
-sUngetc(data, c, file)
-    xpmData *data;
-    int c;
-    FILE *file;
+sUngetc(xpmData *data, int c, FILE *file)
 {
     ungetc(c, data->stream.file);
     if (c == '\n') {
@@ -94,7 +88,7 @@ sUngetc(data, c, file)
 #include "Attrib.c"
 #include "Image.c"
 
-void
+static void
 ErrorMessage(
     int ErrorStatus,
     xpmData *data)
@@ -106,7 +100,7 @@ ErrorMessage(
     case XpmSuccess:
 	return;
     case XpmOpenFailed:
-	/* L10N_Comments : Error produced when filename does not exist 
+	/* L10N_Comments : Error produced when filename does not exist
 	   or insufficient permissions to open (i.e. cxpm /no/such/file ) */
 	error = gettext("Cannot open file");
 	break;
@@ -117,7 +111,7 @@ ErrorMessage(
 	break;
     case XpmNoMemory:
 	/* L10N_Comments : Error produced when filename can be read, but
-	   is too big for memory 
+	   is too big for memory
 	   (i.e. limit datasize 32 ; cxpm /usr/dt/backdrops/Crochet.pm ) */
 	error = gettext("Not enough memory");
 	break;
@@ -143,9 +137,7 @@ ErrorMessage(
 }
 
 int
-main(argc, argv)
-    int argc;
-    char **argv;
+main(int argc, char **argv)
 {
     XpmImage image;
     char *filename;

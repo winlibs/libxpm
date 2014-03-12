@@ -1,4 +1,3 @@
-/* $XdotOrg: lib/Xpm/src/parse.c,v 1.6 2005/07/16 21:11:25 alanc Exp $ */
 /*
  * Copyright (C) 1989-95 GROUPE BULL
  *
@@ -23,7 +22,6 @@
  * used in advertising or otherwise to promote the sale, use or other dealings
  * in this Software without prior written authorization from GROUPE BULL.
  */
-/* $XFree86: xc/extras/Xpm/lib/parse.c,v 1.2 2000/09/26 15:56:43 tsi Exp $ */
 
 /*****************************************************************************\
 * parse.c:                                                                    *
@@ -34,7 +32,6 @@
 *                                                                             *
 *  Developed by Arnaud Le Hors                                                *
 \*****************************************************************************/
-/* $XFree86$ */
 
 /*
  * The code related to FOR_MSW has been added by
@@ -73,7 +70,7 @@ LFUNC(ParsePixels, int, (xpmData *data, unsigned int width,
 			 unsigned int cpp, XpmColor *colorTable,
 			 xpmHashTable *hashtable, unsigned int **pixels));
 
-char *xpmColorKeys[] = {
+const char *xpmColorKeys[] = {
     "s",				/* key #1: symbol */
     "m",				/* key #2: mono visual */
     "g4",				/* key #3: 4 grays visual */
@@ -82,12 +79,16 @@ char *xpmColorKeys[] = {
 };
 
 int
-xpmParseValues(data, width, height, ncolors, cpp,
-	    x_hotspot, y_hotspot, hotspot, extensions)
-    xpmData *data;
-    unsigned int *width, *height, *ncolors, *cpp;
-    unsigned int *x_hotspot, *y_hotspot, *hotspot;
-    unsigned int *extensions;
+xpmParseValues(
+    xpmData		*data,
+    unsigned int	*width,
+    unsigned int	*height,
+    unsigned int	*ncolors,
+    unsigned int	*cpp,
+    unsigned int	*x_hotspot,
+    unsigned int	*y_hotspot,
+    unsigned int	*hotspot,
+    unsigned int	*extensions)
 {
     unsigned int l;
     char buf[BUFSIZ + 1];
@@ -192,19 +193,20 @@ xpmParseValues(data, width, height, ncolors, cpp,
 }
 
 int
-xpmParseColors(data, ncolors, cpp, colorTablePtr, hashtable)
-    xpmData *data;
-    unsigned int ncolors;
-    unsigned int cpp;
-    XpmColor **colorTablePtr;
-    xpmHashTable *hashtable;
+xpmParseColors(
+    xpmData		 *data,
+    unsigned int	  ncolors,
+    unsigned int	  cpp,
+    XpmColor		**colorTablePtr,
+    xpmHashTable	 *hashtable)
 {
     unsigned int key = 0, l, a, b, len;
     unsigned int curkey;		/* current color key */
     unsigned int lastwaskey;		/* key read */
     char buf[BUFSIZ+1];
     char curbuf[BUFSIZ];		/* current buffer */
-    char **sptr, *s;
+    const char **sptr;
+    char *s;
     XpmColor *color;
     XpmColor *colorTable;
     char **defaults;
@@ -365,21 +367,21 @@ xpmParseColors(data, ncolors, cpp, colorTablePtr, hashtable)
 }
 
 static int
-ParsePixels(data, width, height, ncolors, cpp, colorTable, hashtable, pixels)
-    xpmData *data;
-    unsigned int width;
-    unsigned int height;
-    unsigned int ncolors;
-    unsigned int cpp;
-    XpmColor *colorTable;
-    xpmHashTable *hashtable;
-    unsigned int **pixels;
+ParsePixels(
+    xpmData		 *data,
+    unsigned int	  width,
+    unsigned int	  height,
+    unsigned int	  ncolors,
+    unsigned int	  cpp,
+    XpmColor		 *colorTable,
+    xpmHashTable	 *hashtable,
+    unsigned int	**pixels)
 {
     unsigned int *iptr, *iptr2 = NULL; /* found by Egbert Eich */
     unsigned int a, x, y;
 
     if ((height > 0 && width >= UINT_MAX / height) ||
-	width * height >= UINT_MAX / sizeof(unsigned int)) 
+	width * height >= UINT_MAX / sizeof(unsigned int))
 	return XpmNoMemory;
 #ifndef FOR_MSW
     iptr2 = (unsigned int *) XpmMalloc(sizeof(unsigned int) * width * height);
@@ -538,10 +540,10 @@ do \
 }
 
 int
-xpmParseExtensions(data, extensions, nextensions)
-    xpmData *data;
-    XpmExtension **extensions;
-    unsigned int *nextensions;
+xpmParseExtensions(
+    xpmData		 *data,
+    XpmExtension	**extensions,
+    unsigned int	 *nextensions)
 {
     XpmExtension *exts = NULL, *ext;
     unsigned int num = 0;
@@ -659,10 +661,10 @@ do { \
  * in an an XpmImage structure which is returned.
  */
 int
-xpmParseData(data, image, info)
-    xpmData *data;
-    XpmImage *image;
-    XpmInfo *info;
+xpmParseData(
+    xpmData	*data,
+    XpmImage	*image,
+    XpmInfo	*info)
 {
     /* variables to return */
     unsigned int width, height, ncolors, cpp;
