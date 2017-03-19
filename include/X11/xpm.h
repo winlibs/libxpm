@@ -58,8 +58,8 @@
  * Then the XpmIncludeVersion number is built from these numbers.
  */
 #define XpmFormat 3
-#define XpmVersion 4
-#define XpmRevision 11
+#define XpmVersion 5
+#define XpmRevision 12
 #define XpmIncludeVersion ((XpmFormat * 100 + XpmVersion) * 100 + XpmRevision)
 
 #ifndef XPM_NUMBERS
