@@ -139,12 +139,11 @@ typedef BOOL Bool;		/* take MSW bool */
 
 /* Some functions and constants that have non-standard names in the
    MS library.  */
-#include <io.h>
-#if _MSC_VER < 1900
-#define snprintf _snprintf
-#endif
 #define bzero(addr,sz) memset(addr, 0, sz)
+#define close _close
+#define fdopen _fdopen
 #define index strchr
+#define open _open
 #define O_RDONLY _O_RDONLY
 #define rindex strrchr
 #define strdup _strdup

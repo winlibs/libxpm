@@ -1,0 +1,1 @@
+.so man__libmansuffix__/XpmCreateBufferFromImage.__libmansuffix__
