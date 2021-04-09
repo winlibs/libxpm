@@ -22,13 +22,82 @@
 #
 
 appmandir = $(APP_MAN_DIR)
-appman_PRE = sxpm.man cxpm.man
+libmandir = $(LIB_MAN_DIR)
+libman_PRE=$(all_shadows:=.man) \
+	xpmmisc.man	        \
+	xpmcreatepixmap.man	\
+	xpmwrite.man	        \
+	xpmcreateimage.man	\
+	xpmcreatebuffer.man     \
+	xpmread.man	        \
+	xpmcreatedata.man	\
+	xpmcreatexpmimage.man
+
+libman_DATA = $(libman_PRE:man=$(LIB_MAN_SUFFIX))
+
+appman_PRE = sxpm.man cxpm.man 
 appman_DATA = $(appman_PRE:man=$(APP_MAN_SUFFIX))
 
-EXTRA_DIST = $(appman_PRE)
-CLEANFILES = $(appman_DATA)
-SUFFIXES = .$(APP_MAN_SUFFIX) .man
+EXTRA_DIST = $(appman_PRE) $(libman_PRE)
+CLEANFILES = $(appman_DATA) $(libman_DATA)
+SUFFIXES = .$(APP_MAN_SUFFIX) .$(LIB_MAN_SUFFIX) .man
+
+all_shadows = \
+         $(xpmcreatebuffer_shadows)  \
+         $(xpmcreatedata_shadows)  \
+         $(xpmcreateimage_shadows)  \
+         $(xpmcreatepixmap_shadows)  \
+         $(xpmcreatexpmimage_shadows)  \
+         $(xpmmisc_shadows)  \
+         $(xpmread_shadows)  \
+         $(xpmwrite_shadows)  
+
+xpmcreatebuffer_shadows = \
+	XpmCreateBufferFromImage  \
+	XpmCreateBufferFromPixmap  \
+	XpmCreateBufferFromXpmImage  
+xpmcreatedata_shadows = \
+	XpmCreateDataFromImage  \
+	XpmCreateDataFromPixmap  \
+	XpmCreateDataFromXpmImage  
+xpmcreateimage_shadows = \
+	XpmCreateImageFromBuffer  \
+	XpmCreateImageFromData  \
+	XpmCreateImageFromXpmImage  
+xpmcreatepixmap_shadows = \
+	XpmCreatePixmapFromBuffer  \
+	XpmCreatePixmapFromData  \
+	XpmCreatePixmapFromXpmImage  
+xpmcreatexpmimage_shadows = \
+	XpmCreateXpmImageFromBuffer  \
+	XpmCreateXpmImageFromData  \
+	XpmCreateXpmImageFromImage  \
+	XpmCreateXpmImageFromPixmap  
+xpmmisc_shadows = \
+	XpmLibraryVersion  \
+	XpmGetErrorString  \
+	XpmFree  \
+	XpmFreeExtensions  \
+	XpmAttributesSize  \
+	XpmFreeAttributes  \
+	XpmFreeXpmImage  \
+	XpmFreeXpmInfo  
+xpmread_shadows = \
+	XpmReadFileToImage  \
+	XpmReadFileToPixmap  \
+	XpmReadFileToBuffer  \
+	XpmReadFileToData  \
+	XpmReadFileToXpmImage
+
+xpmwrite_shadows = \
+	XpmWriteFileFromPixmap  \
+	XpmWriteFileFromImage  \
+	XpmWriteFileFromXpmImage  \
+	XpmWriteFileFromBuffer  
 
 # String replacements in MAN_SUBSTS now come from xorg-macros.m4 via configure
 .man.$(APP_MAN_SUFFIX):
+	$(AM_V_GEN)$(SED) $(MAN_SUBSTS) < $< > $@
+
+.man.$(LIB_MAN_SUFFIX):
 	$(AM_V_GEN)$(SED) $(MAN_SUBSTS) < $< > $@
