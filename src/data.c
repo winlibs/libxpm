@@ -174,6 +174,10 @@ ParseComment(xpmData *data)
 		notend = 0;
 		Ungetc(data, *s, file);
 	    }
+	    else if (c == EOF) {
+		/* hit end of file before the end of the comment */
+		return XpmFileInvalid;
+	    }
 	}
 	return 0;
     }
