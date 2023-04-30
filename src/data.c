@@ -259,13 +259,13 @@ xpmNextWord(
     int c;
 
     if (!data->type || data->type == XPMBUFFER) {
-	while (isspace(c = *data->cptr) && c != data->Eos)
+	while ((c = *data->cptr) && isspace(c) && (c != data->Eos))
 	    data->cptr++;
 	do {
 	    c = *data->cptr++;
 	    *buf++ = c;
 	    n++;
-	} while (!isspace(c) && c != data->Eos && n < buflen);
+	} while (c && !isspace(c) && (c != data->Eos) && (n < buflen));
 	n--;
 	data->cptr--;
     } else {
