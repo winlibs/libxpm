@@ -108,7 +108,7 @@ ParseComment(xpmData *data)
 		n++;
 		s2++;
 	    } while (c == *s2 && *s2 != '\0' && c);
-	    if (*s2 == '\0') {
+	    if (*s2 == '\0' || c == '\0') {
 		/* this is the end of the comment */
 		notend = 0;
 		data->cptr--;
