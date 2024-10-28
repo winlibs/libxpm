@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libxpm", "libxpm.vcxproj", "{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DLL Debug|Win32 = DLL Debug|Win32
+		DLL Debug|x64 = DLL Debug|x64
+		DLL Release|Win32 = DLL Release|Win32
+		DLL Release|x64 = DLL Release|x64
+		Static Debug|Win32 = Static Debug|Win32
+		Static Debug|x64 = Static Debug|x64
+		Static Release|Win32 = Static Release|Win32
+		Static Release|x64 = Static Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Debug|Win32.ActiveCfg = DLL Debug|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Debug|Win32.Build.0 = DLL Debug|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Debug|x64.ActiveCfg = DLL Debug|x64
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Debug|x64.Build.0 = DLL Debug|x64
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Release|Win32.ActiveCfg = DLL Release|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Release|Win32.Build.0 = DLL Release|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Release|x64.ActiveCfg = DLL Release|x64
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.DLL Release|x64.Build.0 = DLL Release|x64
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Debug|Win32.ActiveCfg = Static Debug|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Debug|Win32.Build.0 = Static Debug|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Debug|x64.ActiveCfg = Static Debug|x64
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Debug|x64.Build.0 = Static Debug|x64
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Release|Win32.ActiveCfg = Static Release|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Release|Win32.Build.0 = Static Release|Win32
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Release|x64.ActiveCfg = Static Release|x64
+		{5DC29C20-FE21-47EF-AC7D-641BD7DDD962}.Static Release|x64.Build.0 = Static Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
