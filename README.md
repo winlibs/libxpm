@@ -1,42 +1,45 @@
-# libxpm
+libXpm - X Pixmap (XPM) image file format library
+-------------------------------------------------
 
-## Available prebuilt libraries
+All questions regarding this software should be directed at the
+Xorg mailing list:
 
-All prebuilt libraries are available in the php-libs
-[repositories](http://windows.php.net/downloads/php-sdk/)
+  https://lists.x.org/mailman/listinfo/xorg
 
-The filename format is:
+The primary development code repository can be found at:
 
-libxpm-x.y.z-vcversion.zip
+  https://gitlab.freedesktop.org/xorg/lib/libXpm
 
-where x.y.z defines the version, vcversion which Visual C++ has been used.
+Please submit bug reports and requests to merge patches there.
 
-## Building LibXpm 3.5.7
+For patch submission instructions, see:
 
-### Requirements
+  https://www.x.org/wiki/Development/Documentation/SubmittingPatches
 
-  * LibXPM Sources from our [repositories](https://github.com/winlibs/libxpm)
+------------------------------------------------------------------------------
 
-  * Common tools used to compile PHP
+libXpm supports two optional features to handle compressed pixmap files.
 
-### Configuration
+--enable-open-zfile makes libXpm recognize file names ending in .Z and .gz
+and open a pipe to the appropriate command to compress the file when writing
+and uncompress the file when reading. This is enabled by default on platforms
+other than MinGW and can be disabled by passing the --disable-open-zfile flag
+to the configure script.
 
-LibXpm can be compiled using various modes. Only the following list can be
-used with PHP:
+--enable-stat-zfile make libXpm search for a file name with .Z or .gz added
+if it can't find the file it was asked to open.  It relies on the
+--enable-open-zfile feature to open the file, and is enabled by default
+when --enable-open-zfile is enabled, and can be disabled by passing the
+--disable-stat-zfile flag to the configure script.
 
-  * “DLL Release”
+All of these commands will be executed with whatever userid & privileges the
+function is called with, relying on the caller to ensure the correct euid,
+egid, etc. are set before calling.
 
-  * “DLL Debug”
+To reduce risk, the paths to these commands are now set at configure time to
+the first version found in the PATH used to run configure, and do not depend
+on the PATH environment variable set at runtime.
 
-  * “Static Release”
-
-  * “Static Debug”
-
-PHP uses “LIB Release” for the PHP builds.
-
-One of these option has to be used while calling the makefile (VC6 only). VS
-solution files are given for VC8 and VC9.
-
-### Compile
-
-Go to the .\windows subdir, choose and compile the appropriate VC solution.
+To specify paths to be used for these commands instead of searching $PATH, pass
+the XPM_PATH_COMPRESS, XPM_PATH_UNCOMPRESS, and XPM_PATH_GZIP
+variables to the configure command.
